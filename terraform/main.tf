@@ -30,7 +30,7 @@ resource "aws_s3_bucket" "static_site" {
 resource "aws_s3_bucket_object" "index_html" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "index.html"
-  source = "website/index.html"
+  source = "index.html"
   acl    = "public-read"
 }
 
@@ -38,6 +38,6 @@ resource "aws_s3_bucket_object" "index_html" {
 resource "aws_s3_bucket_object" "coffee_image" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "coffee.jpg"
-  source = "website/coffee.jpg"
+  source = "coffee.jpg"
   acl    = "public-read"
 }
