@@ -9,12 +9,13 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"  # Change this to your preferred region
+  region = "us-east-1" 
 }
 
+# Define the S3 bucket
 resource "aws_s3_bucket" "static_site" {
-  bucket = "sakib-terraform-bucket"  # Replace with a unique bucket name
-  acl    = "public-read"
+  bucket = "sakib-terraform-bucket-new" 
+
   website {
     index_document = "index.html"
   }
@@ -25,17 +26,18 @@ resource "aws_s3_bucket" "static_site" {
   }
 }
 
+# Define the index.html object
 resource "aws_s3_bucket_object" "index_html" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "index.html"
   source = "website/index.html"
-  acl    = "public-read"
+  acl    = "public-read"  # Optional: Depending on your needs
 }
 
+# Define the coffee.jpg object
 resource "aws_s3_bucket_object" "coffee_image" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "coffee.jpg"
   source = "website/coffee.jpg"
-  acl    = "public-read"
+  acl    = "public-read"  # Optional: Depending on your needs
 }
-
