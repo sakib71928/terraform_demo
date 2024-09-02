@@ -31,7 +31,7 @@ resource "aws_s3_bucket_object" "index_html" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "index.html"
   source = "website/index.html"
-  acl    = "public-read"  # Optional: Depending on your needs
+  acl    = "public-read"
 }
 
 # Define the coffee.jpg object
@@ -39,5 +39,5 @@ resource "aws_s3_bucket_object" "coffee_image" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "coffee.jpg"
   source = "website/coffee.jpg"
-  acl    = "public-read"  # Optional: Depending on your needs
+  acl    = "public-read"
 }
