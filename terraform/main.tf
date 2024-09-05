@@ -41,3 +41,6 @@ resource "aws_s3_bucket_object" "coffee_image" {
   source = "coffee.jpg"
 content_type = "image/jpeg"
 }
+output "website_endpoint" {
+  value = aws_s3_bucket.static_site.website_endpoint
+}
