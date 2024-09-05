@@ -26,6 +26,7 @@ resource "aws_s3_bucket" "static_site" {
   }
 }
 
+
 # Define the index.html object
 resource "aws_s3_bucket_object" "index_html" {
   bucket = aws_s3_bucket.static_site.bucket
