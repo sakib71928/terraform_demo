@@ -37,29 +37,4 @@ jobs:
       run: terraform apply -auto-approve
       working-directory: terraform
       
-    - name: Get Terraform Output
-      id: output
-      run: terraform output -json > terraform_output.json
-      working-directory: terraform
-
-    - name: List Files
-      run: ls -la terraform
-      working-directory: terraform
-
-    - name: Check File Contents
-      run: |
-        if [ -f terraform/terraform_output.json ]; then
-          cat terraform/terraform_output.json
-        else
-          echo "terraform_output.json file does not exist."
-        fi
-      working-directory: terraform
-
-    - name: Display Website Endpoint
-      run: |
-        if [ -f terraform/terraform_output.json ]; then
-          echo "Website Endpoint: $(jq -r '.website_endpoint.value' terraform/terraform_output.json)"
-        else
-          echo "terraform_output.json file does not exist."
-        fi
-      working-directory: terraform
+  
