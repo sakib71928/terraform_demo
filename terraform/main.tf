@@ -31,6 +31,7 @@ resource "aws_s3_bucket_object" "index_html" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "index.html"
   source = "index.html"
+content_type = "text/html"
 }
 
 # Define the coffee.jpg object
@@ -38,4 +39,5 @@ resource "aws_s3_bucket_object" "coffee_image" {
   bucket = aws_s3_bucket.static_site.bucket
   key    = "coffee.jpg"
   source = "coffee.jpg"
+content_type = "image/jpeg"
 }
