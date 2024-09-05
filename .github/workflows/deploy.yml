@@ -36,3 +36,13 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve
       working-directory: terraform
+      
+    - name: Get Terraform Output
+      id: output
+      run: terraform output -json > terraform_output.json
+      working-directory: terraform
+
+    - name: Display Website Endpoint
+      run: |
+        cat terraform_output.json
+        echo "Website Endpoint: $(jq -r '.website_endpoint.value' terraform_output.json)"
