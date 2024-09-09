@@ -8,7 +8,7 @@ terraform {
   required_version = ">= 1.0"
 
 backend "local" {
-    path = "./terraform.tfstate"  # This will store the state file in the current folder
+    path = "./terraform.tfstate"
   }
 }
 
