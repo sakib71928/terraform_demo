@@ -8,7 +8,7 @@ terraform {
   required_version = ">= 1.0"
 
 backend "s3" {
-    bucket         = "teraform-state-bucket-sakib"
+    bucket         = "terraform-state-bucket-sakib"
     key            = "terraform.tfstate"
     region         = "us-east-1"
   }
