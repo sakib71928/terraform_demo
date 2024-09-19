@@ -25,7 +25,7 @@ jobs:
     - name: Assume IAM Usage Role using OIDC
       uses: aws-actions/configure-aws-credentials@v3
       with:
-        role-to-assume: arn:aws:iam::010438473890:role/deployment-role
+        role-to-assume: arn:aws:iam::010438473890:role/usage-role
         aws-region: us-east-1
 
     - name: Initialize Terraform
@@ -39,7 +39,7 @@ jobs:
     - name: Assume IAM Deployment Role using OIDC
       uses: aws-actions/configure-aws-credentials@v3
       with:
-        role-to-assume: arn:aws:iam::010438473890:role/DeploymentRole
+        role-to-assume: arn:aws:iam::010438473890:role/deployment-role
         aws-region: us-east-1
 
     - name: Terraform Apply
