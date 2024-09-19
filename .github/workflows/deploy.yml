@@ -18,11 +18,10 @@ jobs:
       with:
         terraform_version: 1.9.5
 
-    - name: Configure AWS credentials using secrets
+    - name: Assume IAM Usage Role using OIDC
       uses: aws-actions/configure-aws-credentials@v3
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: arn:aws:iam::010438473890:role/deployment-role
         aws-region: us-east-1
 
     - name: Initialize Terraform
@@ -32,6 +31,12 @@ jobs:
     - name: Terraform Plan
       run: terraform plan
       working-directory: terraform
+     
+    - name: Assume IAM Deployment Role using OIDC
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+        role-to-assume: arn:aws:iam::010438473890:role/DeploymentRole
+        aws-region: us-east-1
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
